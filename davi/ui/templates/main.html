@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="title" content="davi by HexACK" />
+    <meta name="description" content="Django Ansible Vault Interface" />
+    <meta name="keywords" content="Django, Ansible, Vault, Interface" />
+    <meta name="author" content="HexACK" />
+
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="davi by HexACK" />
+    <meta property="og:description" content="Django Ansible Vault Interface" />
+    <meta property="og:url" content="/" />
+    <meta property="og:site_name" content="davi by HexACK" />
+    <meta property="og:type" content="tool" />
+
+    <title>davi by HexACK</title>
+  </head>
+  <body>
+    <h1>david - Django Ansible Vault Interface</h1>
+    <form name="main" action="{% url "main" %}" method="post">
+      {% csrf_token %}
+      <table>
+        <tr>
+            <td colspan="2"><h2>{% if action %}Action : {{ action }}{% endif %}</h2></td>
+        </tr>
+        <tr>
+            <td>
+              <label for="id_yaml"><b>YAML :</b></label><br/>
+              <textarea name="yaml" cols="80" rows="40" id="id_yaml">{{ form.yaml.value|default_if_none:"" }}</textarea>
+            </td>
+            <td>
+                <label for="id_vault"><b>Vault :</b></label><br/>
+                <textarea name="vault" cols="80" rows="40" id="id_vault">{{ form.vault.value|default_if_none:""  }}</textarea></td>
+        </tr>
+        <tr>
+          <td><label for="id_password">Mot de passe :</label><input type="text" name="password" maxlength="100" required id="id_password" value="{{ form.password.value|default_if_none:"" }}"></td>
+          <td><button type="submit">davi !</button></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
